@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta id="pageDescription" name="description" content="Mô tả chi tiết, điểm cần cân nhắc và gợi ý đối tượng phù hợp cho từng sản phẩm — từ ONITECH.">
+<title id="pageTitle">Mô tả sản phẩm</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #171233;
+    --ink-soft: #211a45;
+    --paper: #f1eefb;
+    --paper-warm: #e6e2f8;
+    --gold: #8a5cf5;
+    --rust: #4a5bf0;
+    --text-on-ink: #ece7fb;
+    --text-on-paper: #1c1830;
+    --text-muted: #6d6690;
+    --border: #d9d4f0;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--paper);
+    color: var(--text-on-paper);
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, .display { font-family: 'Fraunces', serif; font-weight: 600; margin: 0; }
+  .eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold);
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--rust); outline-offset: 3px; }
+
+  /* ---------- THANH QUAY LẠI ---------- */
+  .back-bar {
+    padding: 1.2rem 2rem;
+    border-bottom: 1px solid #d9d4f0;
+  }
+  .back-link {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.82rem;
+    text-decoration: none;
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .back-link:hover { color: var(--rust); }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 80vh;
+  }
+  .hero-cover {
+    background: linear-gradient(160deg, var(--cover-a, var(--ink)) 0%, var(--cover-b, var(--ink-soft)) 100%);
+    color: var(--text-on-ink);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; padding: 4rem 2.5rem; position: relative; overflow: hidden;
+  }
+  .hero-cover::after {
+    content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 60px;
+    background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 100%); pointer-events: none;
+  }
+  .hero-monogram {
+    position: absolute; top: -1rem; left: 50%; transform: translateX(-50%);
+    font-family: 'Fraunces', serif; font-size: 14rem; font-weight: 600; line-height: 1;
+    color: var(--cover-accent, var(--gold)); opacity: 0.1; pointer-events: none; user-select: none;
+  }
+  .hero-cover-photo {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: contain;
+    padding: 2rem;
+  }
+  .hero-cover-icon {
+    width: 72px; height: 72px;
+    color: var(--cover-accent, var(--gold));
+    opacity: 0.85;
+    position: relative;
+  }
+  .hero-cover-icon svg { width: 100%; height: 100%; }
+  .cover-genre {
+    font-family: 'Space Mono', monospace; font-size: 0.8rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--cover-accent, var(--gold)); margin-bottom: 1.5rem;
+    position: relative;
+  }
+  .cover-title { font-size: clamp(2.2rem, 5.5vw, 3.8rem); line-height: 1.05; max-width: 14ch; position: relative; }
+  .cover-author { margin-top: 1.5rem; font-size: 1.05rem; opacity: 0.8; font-style: italic; position: relative; }
+  .cover-rule { width: 48px; height: 2px; background: var(--cover-accent, var(--rust)); margin: 1.75rem 0; position: relative; }
+
+  .hero-info {
+    background: var(--paper);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 4rem 3.5rem; gap: 1rem;
+  }
+  .info-title {
+    font-size: clamp(2rem, 4.2vw, 2.8rem);
+    line-height: 1.1;
+  }
+  .info-author {
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--text-muted);
+  }
+  .info-genre-tag {
+    display: inline-block; font-family: 'Space Mono', monospace; font-size: 0.78rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--cover-accent, var(--rust));
+    border: 1px solid var(--cover-accent, var(--rust)); padding: 0.3rem 0.75rem;
+    border-radius: 100px; width: fit-content; margin: 0.25rem 0 0.5rem;
+  }
+  .info-price { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 600; color: var(--rust); margin: 0.25rem 0 0.75rem; }
+  .blurb { font-size: 1.08rem; max-width: 46ch; }
+  .cta {
+    display: inline-flex; align-items: center; gap: 0.6rem; width: fit-content;
+    background: var(--rust); color: var(--paper); font-weight: 600; font-size: 1rem;
+    padding: 0.9rem 1.8rem; border-radius: 3px; text-decoration: none;
+    transition: transform 0.15s ease, background 0.15s ease; margin-top: 0.5rem;
+  }
+  .cta:hover { background: #3a49c9; transform: translateY(-2px); }
+  .cta.disabled { background: #a29bc4; cursor: not-allowed; pointer-events: none; }
+
+  /* ---------- MÔ TẢ ---------- */
+  section.body-section { padding: 5rem 3.5rem; }
+  .section-inner { max-width: 780px; margin: 0 auto; }
+  .section-heading { font-size: clamp(1.7rem, 3vw, 2.2rem); margin: 0.5rem 0 1.5rem; }
+  .section-inner p { font-size: 1.08rem; }
+
+  /* ---------- ĐIỂM CHƯA TỐT ---------- */
+  section.cons-section { background: var(--paper-warm); }
+  .cons-section .eyebrow { color: var(--text-muted); }
+
+  /* ---------- ĐỐI TƯỢNG PHÙ HỢP ---------- */
+  .audience-box {
+    background: rgba(255,255,255,0.4);
+    border-left: 3px solid var(--cover-accent, var(--gold));
+    border-radius: 4px;
+    padding: 1.75rem 2rem;
+  }
+  html[data-theme="dark"] .audience-box { background: rgba(255,255,255,0.05); }
+  .audience-box p { margin: 0; }
+
+  .not-found {
+    min-height: 70vh; display: flex; flex-direction: column; align-items: center;
+    justify-content: center; text-align: center; gap: 1rem; padding: 2rem;
+  }
+  .not-found h1 { font-size: 2rem; }
+  .not-found a { color: var(--rust); font-weight: 600; }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-cover { padding: 5rem 2rem 3rem; }
+    .hero-cover::after { display: none; }
+    .hero-info { padding: 3rem 2rem; }
+    section.body-section { padding: 3rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="back-bar">
+    <a class="back-link" id="backLink" href="index.html">← Quay lại cửa hàng</a>
+  </div>
+
+  <!-- Nội dung được JS sinh ra bên dưới, dựa trên ?id= trên URL -->
+  <main id="pageContent"></main>
+
+  <script>
+    /* ============================================================
+       SỬA Ở ĐÂY: mảng "products" này PHẢI giống hệt mảng trong file
+       index.html (cùng id, title, brand, category...). Mỗi khi bạn
+       thêm/sửa sản phẩm ở index.html, nhớ copy lại y hệt sang đây.
+
+       - id:          phải khớp với id dùng trong index.html
+       - brand:       tên thương hiệu, hiện ở phần đầu trang
+       - category:    danh mục, hiện dạng thẻ + quyết định màu nền
+       - price:       giá hiển thị, vd "399.000đ"
+       - description: mô tả sản phẩm, hiện ở phần "Về sản phẩm này"
+       - audience:    gợi ý "phù hợp với ai" (tuỳ chọn — để trống thì
+                       phần này tự ẩn)
+       - cons:        vài điều cần cân nhắc (tuỳ chọn — để trống thì
+                       phần này tự ẩn)
+       - buyLink:     link mua hàng thật — để "#" thì nút "Mua ngay"
+                       sẽ tạm bị vô hiệu hoá (mờ đi) cho tới khi bạn
+                       điền link thật vào
+       ============================================================ */
+    const products = [
+      // Xem hướng dẫn field ở đầu file này.
+    ];
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    const product = products.find(b => b.id === id);
+    const content = document.getElementById('pageContent');
+
+    /* Bảng màu theo danh mục — giống hệt bên index.html để đồng bộ
+       màu thẻ giữa trang cửa hàng và trang mô tả */
+    const coverThemes = [
+      { match: ["tai nghe", "loa", "âm thanh"], colors: ["#122036", "#0b1524"], accent: "#7fb3c9",
+        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><path d="M4 14a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h1v-6H4ZM20 14a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-1v-6h1Z"/></svg>` },
+      { match: ["sạc", "cáp", "củ sạc"], colors: ["#332810", "#1e1709"], accent: "#f0c96a",
+        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg>` },
+      { match: ["bàn phím", "chuột", "gõ"], colors: ["#1c2a1c", "#101a10"], accent: "#9bc98a",
+        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="10" rx="1.5"/><path d="M6.5 11h.01M9.5 11h.01M12.5 11h.01M15.5 11h.01M18 11h.01M7 14.5h10"/></svg>` },
+      { match: ["pin dự phòng", "sạc dự phòng"], colors: ["#3a1414", "#200a0a"], accent: "#d4785a",
+        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="15" height="10" rx="2"/><path d="M21 10.5v3"/><path d="M7 11v2M11 11v2"/></svg>` },
+    ];
+    const defaultTheme = { colors: ["#171233", "#211a45"], accent: "#8a5cf5",
+      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m21 8-9-5-9 5 9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>` };
+    function getTheme(category) {
+      const g = (category || "").toLowerCase();
+      return coverThemes.find(t => t.match.some(m => g.includes(m))) || defaultTheme;
+    }
+
+    if (!product) {
+      content.innerHTML = `
+        <div class="not-found">
+          <h1 class="display">Không tìm thấy sản phẩm này</h1>
+          <p>Link có thể chưa đúng, hoặc sản phẩm đã bị gỡ khỏi danh sách.</p>
+          <a href="index.html">← Quay lại cửa hàng</a>
+        </div>`;
+    } else {
+      document.getElementById('pageTitle').textContent = product.title + " — " + product.author;
+      document.getElementById('pageDescription').setAttribute('content', product.description.slice(0, 160));
+
+      const hasRealBuyLink = product.buyLink && product.buyLink !== "#";
+      const buyBtn = hasRealBuyLink
+        ? `<a class="cta" href="${product.buyLink}" target="_blank" rel="noopener">Mua ngay →</a>`
+        : `<a class="cta disabled" href="javascript:void(0)" title="Chưa gán link mua hàng">Mua ngay →</a>`;
+
+      const theme = getTheme(product.genre);
+      const coverStyle = `--cover-a:${theme.colors[0]}; --cover-b:${theme.colors[1]}; --cover-accent:${theme.accent};`;
+      const monogram = (product.title || "?").trim().charAt(0).toUpperCase();
+      // Nếu sản phẩm có "coverImage" (ảnh thật) thì hiện ảnh đó,
+      // không thì dùng bìa màu tự vẽ theo thể loại như bình thường.
+      const coverInner = product.coverImage
+        ? `<img class="hero-cover-photo" src="${product.coverImage}" alt="Ảnh sản phẩm ${product.title}">`
+        : `<span class="hero-monogram">${monogram}</span>
+           <span class="hero-cover-icon">${theme.icon || ""}</span>`;
+
+      // Chỉ hiện phần "điểm chưa tốt" nếu sản phẩm đã có nội dung thật (field cons).
+      const consSection = product.cons
+        ? `<section class="body-section cons-section">
+             <div class="section-inner">
+               <span class="eyebrow">Cân nhắc</span>
+               <h2 class="section-heading">Vài điều cần cân nhắc</h2>
+               <p>${product.cons}</p>
+             </div>
+           </section>`
+        : '';
+
+      // Chỉ hiện phần "đối tượng phù hợp" nếu đã có nội dung thật,
+      // bỏ qua giá trị placeholder "[Đối tượng đọc]" còn sót lại từ trước.
+      const hasRealAudience = product.audience && product.audience !== "[Đối tượng đọc]";
+      const audienceSection = hasRealAudience
+        ? `<section class="body-section">
+             <div class="section-inner">
+               <span class="eyebrow">Gợi ý</span>
+               <h2 class="section-heading">Phù hợp với ai?</h2>
+               <div class="audience-box"><p>${product.audience}</p></div>
+             </div>
+           </section>`
+        : '';
+
+      content.innerHTML = `
+        <header class="hero">
+          <div class="hero-cover" style="${coverStyle}">
+            ${coverInner}
+          </div>
+          <div class="hero-info">
+            <h1 class="info-title">${product.title}</h1>
+            <p class="info-author">${product.brand}</p>
+            <span class="info-genre-tag">${product.category}</span>
+            ${product.price ? `<p class="info-price">${product.price}</p>` : ""}
+            <p class="blurb">${product.description}</p>
+            ${buyBtn}
+          </div>
+        </header>
+
+        <section class="body-section">
+          <div class="section-inner">
+            <span class="eyebrow">Thông tin sản phẩm</span>
+            <h2 class="section-heading">Về sản phẩm này</h2>
+            <p>${product.description}</p>
+          </div>
+        </section>
+
+        ${consSection}
+        ${audienceSection}
+      `;
+    }
+  </script>
+
+  <script src="theme.js"></script>
+</body>
+</html>
